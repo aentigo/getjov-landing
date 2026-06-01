@@ -6,36 +6,56 @@
 <title>Aentigo</title>
 
 <style>
-body{
+*{
 margin:0;
-background:#071b42;
-color:white;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+height:100vh;
+background:linear-gradient(180deg,#071b42 0%,#0b1026 100%);
 font-family:Arial,sans-serif;
 display:flex;
 justify-content:center;
 align-items:center;
-height:100vh;
+color:white;
 text-align:center;
 }
 
 .container{
-max-width:700px;
-padding:20px;
+max-width:800px;
+padding:30px;
 }
 
-img{
-width:220px;
-margin-bottom:20px;
+.logo{
+width:240px;
+max-width:80%;
+margin-bottom:30px;
 }
 
 h1{
-font-size:56px;
-margin-bottom:10px;
+font-size:64px;
+font-weight:800;
+margin-bottom:15px;
 }
 
 p{
-font-size:20px;
-opacity:.8;
+font-size:22px;
+opacity:.85;
+margin-bottom:12px;
+}
+
+.button{
+display:inline-block;
+margin-top:25px;
+padding:14px 32px;
+background:white;
+color:#071b42;
+text-decoration:none;
+font-weight:bold;
+border-radius:12px;
+font-size:18px;
 }
 </style>
 </head>
@@ -44,13 +64,15 @@ opacity:.8;
 
 <div class="container">
 
-<img src="logo.png" alt="Aentigo Logo">
+<img src="logo.png" class="logo" alt="Aentigo Logo">
 
 <h1>Aentigo</h1>
 
 <p>Fast connections between people and opportunities.</p>
 
 <p>Coming Soon on iOS & Android</p>
+
+<a href="#" class="button">Coming Soon</a>
 
 </div>
 
