@@ -7,78 +7,146 @@
 <title>Aentigo Reputation</title>
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
-body {
-  min-height: 100vh;
-  background: linear-gradient(180deg, #071b42 0%, #050914 100%);
-  font-family: Arial, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  text-align: center;
+body{
+  min-height:100vh;
+  background:linear-gradient(180deg,#071b42 0%,#050914 100%);
+  color:white;
+  font-family:Arial,sans-serif;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
 }
 
-.container {
-  width: 100%;
-  max-width: 420px;
-  padding: 24px;
+.container{
+  width:100%;
+  max-width:430px;
+  padding:26px 20px;
 }
 
-.card {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.1);
-  backdrop-filter: blur(20px);
-  border-radius: 28px;
-  padding: 32px 24px;
+.badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:8px 14px;
+  border-radius:999px;
+  background:rgba(34,211,238,.10);
+  border:1px solid rgba(34,211,238,.25);
+  color:#67E8F9;
+  font-size:12px;
+  font-weight:900;
+  margin-bottom:16px;
 }
 
-.username {
-  font-size: 28px;
-  font-weight: 900;
-  color: #22D3EE;
-  margin-bottom: 20px;
+.card{
+  padding:28px 20px;
+  border-radius:30px;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 24px 70px rgba(0,0,0,.38);
+  backdrop-filter:blur(18px);
 }
 
-.stats {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 24px;
+.avatar{
+  width:86px;
+  height:86px;
+  border-radius:50%;
+  margin:0 auto 16px;
+  background:rgba(255,255,255,.08);
+  border:2px solid rgba(34,211,238,.35);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#67E8F9;
+  font-size:34px;
+  font-weight:900;
+  overflow:hidden;
 }
 
-.stat {
-  background: rgba(255,255,255,0.08);
-  padding: 10px 16px;
-  border-radius: 999px;
-  font-weight: 700;
+.avatar img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
 }
 
-.text {
-  color: rgba(255,255,255,0.75);
-  line-height: 1.6;
-  margin-bottom: 24px;
+.brand{
+  font-size:18px;
+  font-weight:900;
+  opacity:.72;
+  margin-bottom:8px;
 }
 
-.button {
-  display: inline-block;
-  background: #22D3EE;
-  color: #071b42;
-  text-decoration: none;
-  padding: 14px 24px;
-  border-radius: 18px;
-  font-weight: 900;
+.username{
+  font-size:28px;
+  font-weight:900;
+  color:#22D3EE;
+  margin-bottom:8px;
 }
 
-.footer {
-  margin-top: 20px;
-  font-size: 12px;
-  opacity: 0.5;
+.display{
+  font-size:15px;
+  opacity:.78;
+  margin-bottom:16px;
+}
+
+.stats{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin:18px 0;
+}
+
+.stat{
+  padding:10px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.12);
+  font-size:13px;
+  font-weight:900;
+}
+
+.bio{
+  font-size:14px;
+  opacity:.75;
+  line-height:1.55;
+  margin-top:12px;
+  min-height:22px;
+}
+
+.button{
+  display:block;
+  margin-top:22px;
+  padding:14px 18px;
+  border-radius:18px;
+  background:#22D3EE;
+  color:#020617;
+  text-decoration:none;
+  font-size:15px;
+  font-weight:900;
+}
+
+.small{
+  margin-top:12px;
+  font-size:12px;
+  opacity:.55;
+}
+
+.footer{
+  margin-top:20px;
+  font-size:12px;
+  opacity:.45;
+}
+
+.error{
+  color:#FCA5A5;
+  font-weight:900;
+  font-size:15px;
 }
 </style>
 </head>
@@ -86,40 +154,124 @@ body {
 <body>
 
 <div class="container">
+
+  <div class="badge">Aentigo Reputation</div>
+
   <div class="card">
 
-    <div class="username" id="username">
-      @username
-    </div>
+    <div class="avatar" id="avatar">A</div>
+
+    <div class="brand">Aentigo</div>
+
+    <div class="username" id="username">@username</div>
+
+    <div class="display" id="displayName">Loading profile...</div>
 
     <div class="stats">
-      <div class="stat">⭐ 5.0</div>
-      <div class="stat">💬 0 Reviews</div>
+      <div class="stat" id="rating">⭐ 5.0</div>
+      <div class="stat" id="reviews">💬 0 reviews</div>
     </div>
 
-    <div class="text">
-      View this reputation profile in the Aentigo app.
+    <div class="bio" id="bio">
+      Public reputation profile.
     </div>
 
-    <a href="https://aentigo.com" class="button">
+    <a class="button" href="https://aentigo.com">
       Open Aentigo
     </a>
+
+    <div class="small">
+      If the app is installed, this profile will open in Aentigo in the future.
+    </div>
 
   </div>
 
   <div class="footer">
     © 2026 Aentigo. All rights reserved.
   </div>
+
 </div>
 
-<script>
-const parts = window.location.pathname.split('/');
-const user = parts[parts.length - 1];
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+import {
+  getFirestore,
+  collection,
+  query,
+  where,
+  limit,
+  getDocs
+} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
-if (user && user !== 'index.html') {
-  document.getElementById('username').innerText =
-    '@' + user.replace('@', '');
+const firebaseConfig = {
+  apiKey: "AIzaSyBqvA58Ge3ssc2GgvhXkH_RPyF2blql0Ts",
+  authDomain: "aentigo.firebaseapp.com",
+  projectId: "aentigo",
+  storageBucket: "aentigo.firebasestorage.app",
+  messagingSenderId: "1012613306087",
+  appId: "1:1012613306087:web:2ab50a04704d52612ab442",
+  measurementId: "G-F61DXP48VB"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const parts = window.location.pathname.split('/').filter(Boolean);
+const usernameFromUrl = parts.length > 1 ? parts[1].replace('@','') : 'username';
+
+const usernameEl = document.getElementById('username');
+const displayEl = document.getElementById('displayName');
+const bioEl = document.getElementById('bio');
+const ratingEl = document.getElementById('rating');
+const reviewsEl = document.getElementById('reviews');
+const avatarEl = document.getElementById('avatar');
+
+usernameEl.innerText = '@' + usernameFromUrl;
+
+async function loadProfile() {
+  try {
+    const q = query(
+      collection(db, "publicProfiles"),
+      where("userName", "==", usernameFromUrl),
+      limit(1)
+    );
+
+    const snap = await getDocs(q);
+
+    if (snap.empty) {
+      displayEl.innerHTML = '<span class="error">Profile not found</span>';
+      bioEl.innerText = 'This Aentigo reputation profile is not public yet.';
+      return;
+    }
+
+    const data = snap.docs[0].data();
+
+    const userName = data.userName || usernameFromUrl;
+    const displayName = data.displayName || 'Aentigo member';
+    const bio = data.bio || 'Public reputation profile.';
+    const rating = Number(data.ratingAverage || 5).toFixed(1);
+    const reviews = Number(data.reviewsCount || 0);
+    const photoUrl = data.photoUrl || '';
+
+    usernameEl.innerText = '@' + userName.replace('@','');
+    displayEl.innerText = displayName;
+    bioEl.innerText = bio;
+    ratingEl.innerText = '⭐ ' + rating;
+    reviewsEl.innerText = '💬 ' + reviews + ' reviews';
+
+    if (photoUrl.trim() !== '') {
+      avatarEl.innerHTML = '<img src="' + photoUrl + '" alt="Profile photo">';
+    } else {
+      avatarEl.innerText = userName.substring(0,1).toUpperCase();
+    }
+
+  } catch (e) {
+    displayEl.innerHTML = '<span class="error">Could not load profile</span>';
+    bioEl.innerText = 'Please try again later.';
+  }
 }
+
+loadProfile();
 </script>
 
 </body>
