@@ -220,10 +220,14 @@ const params = new URLSearchParams(window.location.search);
 const usernameFromQuery = params.get('user');
 
 const parts = window.location.pathname.split('/').filter(Boolean);
-const usernameFromPath = parts.length > 1 ? parts[1].replace('@','') : '';
+const usernameFromPath = parts.length > 1
+    ? parts[1].replace('@', '')
+    : '';
 
 const usernameFromUrl =
-  (usernameFromQuery || usernameFromPath || 'username').replace('@','');
+    (usernameFromQuery || usernameFromPath || 'username')
+        .replace('@', '')
+        .toLowerCase();
 
 const usernameEl = document.getElementById('username');
 const displayEl = document.getElementById('displayName');
@@ -231,14 +235,13 @@ const bioEl = document.getElementById('bio');
 const ratingEl = document.getElementById('rating');
 const reviewsEl = document.getElementById('reviews');
 const avatarEl = document.getElementById('avatar');
-
 usernameEl.innerText = '@' + usernameFromUrl;
 
 async function loadProfile() {
   try {
     const q = query(
       collection(db, "publicProfiles"),
-      where("userName", "==", usernameFromUrl),
+     where("userName", "==", usernameFromUrl.toLowerCase()),
       limit(1)
     );
 
