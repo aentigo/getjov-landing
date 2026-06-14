@@ -216,8 +216,14 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+const params = new URLSearchParams(window.location.search);
+const usernameFromQuery = params.get('user');
+
 const parts = window.location.pathname.split('/').filter(Boolean);
-const usernameFromUrl = parts.length > 1 ? parts[1].replace('@','') : 'username';
+const usernameFromPath = parts.length > 1 ? parts[1].replace('@','') : '';
+
+const usernameFromUrl =
+  (usernameFromQuery || usernameFromPath || 'username').replace('@','');
 
 const usernameEl = document.getElementById('username');
 const displayEl = document.getElementById('displayName');
